@@ -20,13 +20,13 @@ This article and the provided source code can be used in two ways. First, just d
 
 Basic Authentication is a standard protocol defined within HTTP 1.0 that defines an authentication scheme. In this scheme, the client must authenticate itself with a user-ID and password. Basic Authentication is described in [RFC2617](http://www.faqs.org/rfcs/rfc2617.html). When a client requests a resource from a site that is protected using Basic Authentication, the server returns a 401 "Not authorized" response. Inside this response, the server has added an indication that the site is protected using Basic Authentication. The server adds <em>WWW-Authenticate: Basic realm="site"</em> to the header of the response; <em>Basic</em> indicates that the authentication scheme is Basic Authentication, and <em>realm</em> is a string that indicates which part of the site is protected. It has no further usage in the actual authentication mechanism itself. An internet browser generates a dialog based on this response message. This dialog shows the realm and allows a user to enter a user name and password.
 
-![Basic Authentication 1](../../../img/BasicAuthenticationUsingWCFRest_2.png)
+![Basic Authentication 1](../../../images/BasicAuthenticationUsingWCFRest_2.png)
 
-![Basic Authentication 2](../../../img/BasicAuthenticationUsingWCFRest_1.png)
+![Basic Authentication 2](../../../images/BasicAuthenticationUsingWCFRest_1.png)
 
 When a user enters the user name and password, the client resends the request b ut adds **Authorization: Basic SGVsbG8gQmFzZTY0** to the header of the request. The characters after **Basic** are the user name and password, separated by a single colon ":" in a Base64 encoded string. The server decodes the string, extracts the credentials, and validates them against the back-end. When the credentials are correctly validated, the server returns the requested content to the client.
 
-![Basic Authentication 2](../../../img/BasicAuthenticationUsingWCFRest_3.png)
+![Basic Authentication 2](../../../images/BasicAuthenticationUsingWCFRest_3.png)
 
 #Extending WCF REST
 

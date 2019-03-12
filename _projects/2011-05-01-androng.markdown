@@ -8,19 +8,19 @@ tags:
 
 Source on [Github](https://github.com/kalkie/Androng-Android)
 
-|![Screenshot 1](../../../img/Screenshot_Androng_1.png)|![Screenshot 2](../../../img/Screenshot_Androng_2.png)|
+|![Screenshot 1](../../../images/Screenshot_Androng_1.png)|![Screenshot 2](../../../images/Screenshot_Androng_2.png)|
 
 #Introduction
 
 This article describes how I developed and published Androng, a clone of the classic game Pong that runs on Android. I developed the game using Java and it supports a single and two-player modes. I wanted to share how I developed the game from start to finish. By finish I mean actually publishing the game on the Android market. Above are two in-game screenshots.
 
-![Screenshot of the original version of Pong by Atari](../../../img/Screenshot_Original_Pong.png)
+![Screenshot of the original version of Pong by Atari](../../../images/Screenshot_Original_Pong.png)
 
 ##Pong
 
 Pong is a game that was originally developed as an electronic version of ping pong. Atari originally created the game in 1972. The goal is to defeat your opponent by getting a higher score. You have to keep the ball in play and hope that your opponent misses it. In my implementation, whoever reaches 10 points first wins the game.
 
-![Android](../../../img/Android_Logo.jpg)
+![Android](../../../images/Android_Logo.jpg)
 
 ##Android
 
@@ -90,7 +90,7 @@ A view creates the user interface of an activity and derives from the <code>View
 
 All layout types are viewgroups and are used to create hierarchical models. Androng uses a <code>FrameLayout</code> which is the simplest layout object. A <code>FrameLayout</code> is a blank reserved space on the screen that can be filled with one object. All the child objects are pinned to the left top corner. It is not possible to specify a location for a child; each consecutive child is drawn over earlier objects which can obscure the previous one.
 
-![Visual representation of the Androng layout](../../../img/Androng_Layout.png)
+![Visual representation of the Androng layout](../../../images/Androng_Layout.png)
 
 In the case of Androng, the <code>AndrongSurfaceView</code> and the <code>TextView</code> are drawn on top of each other. Loading the XML in the user interface is done in the <code>onCreate</code> method of the activity <strong><code>setContentView(R.layout.main);</code></strong> where <code>R.layout.main</code> identifies the XML file in the resource.
 
@@ -142,7 +142,7 @@ canvas.drawBitmap(backgroundImage, 0, 0, null);
 
 In Androng, the ball is animated. The animation consists of 12 frames, every frame rotates the ball 30 degrees. When the ball hits a paddle or the side, the animation reverses. This creates a nice animation effect of the ball in the game.
 
-![Animation frames of the Anrong ball](../../../img/Ball_Animation.png)
+![Animation frames of the Anrong ball](../../../images/Ball_Animation.png)
 
 Android has built-in support for animation. It has animation properties in which you can set a start and end value of a property of an object. And there is also frame animation using <code>AnimationDrawable</code>. Frame animation shows a sequence of images in their defined order. The animation of the <code>AnimationDrawable</code> must be defined in XML.
 
@@ -220,7 +220,7 @@ Most, if not all games need collision detection. There are many ways of detectin
 
 The bounding box method can be easily illustrated with the following picture:
 
-![Bounding box method](../../../img/Bounding_Box_Hit_Detection.png)
+![Bounding box method](../../../images/Bounding_Box_Hit_Detection.png)
 
 The following algorithm detects if the virtual boxes around each sprite overlap:
 
@@ -239,13 +239,13 @@ if (left1 > right2)
 
 The bounding box collision detection algorithm is a fast way to detect a collision, but if the shapes are not rectangular such as the ball, we could get false positives. For example, in the following situation, the bounding box detection would detect a collision while in fact there isn't one.
 
-![False detection when using bounding box method](../../../img/Bounding_Box_Hit_Detection_False_Positive.png)
+![False detection when using bounding box method](../../../images/Bounding_Box_Hit_Detection_False_Positive.png)
 
 #Pixel perfect detection
 
 We could solve this by using a bounding circle for the ball, but I wanted to solve this using a more generic approach, using the pixels of the sprite. Therefore, when the bounding box algorithm detects a collision, we scan the overlap in both sprites for pixels. If the same location in both sprites contains a pixel (color != 0), we have a collision.
 
-![Collision detection using pixel scan](../../../img/Pixel_Detection.png)
+![Collision detection using pixel scan](../../../images/Pixel_Detection.png)
 
 The algorithm determines the width and height of the overlapping box and where in each sprite the box is. The algorithm scans each pixel in the box for a collision. Reading the pixel from the bitmap is possible by calling the <code>getBitmap()</code> method on the Drawable. See the method <code>collideswith</code> of the sprite class in the source code for the full collision detection routine.
 
@@ -287,7 +287,7 @@ Toast toast = Toast.makeText(context, "Select Menu for a new game.", Toast.LENGT
 toast.show();
 {% endhighlight %}
 
-![Showing a Toast notification](../../../img/Toast.png)
+![Showing a Toast notification](../../../images/Toast.png)
 
 The constant <code>Toast.LENGTH_LONG</code>, according to the Android documentation, will say to Android that the text notification should be shown for a long period. The default, <code>Toast.LENGHT_LONG</code>, corresponds to 3.5s. <code>Show()</code> will actually show the text on the screen.
 
@@ -383,13 +383,13 @@ I wanted to publish Androng on the Android Market. Android Market is an open dis
 
 There is a one time $25 registration fee before you can publish your games on the Android Market. Besides that, for every app sold on the Android Market, Google receives a 30% fee. Which to my opinion is reasonable compared with other publication channels. The image below shows the publisher screen for Androng. Androng is free and can be downloaded from the Android Market.
 
-![Publish your application on Android market](../../../img/Publish_Android_Market.png)
+![Publish your application on Android market](../../../images/Publish_Android_Market.png)
 
 The community edition of IntelliJ gives you the opportunity to package the application. Before you publish your application, you must sign the application using a public private key combination. Updates of the application must use the same key for signing. This package with the <em>.apk</em> extension can be published on the Android Market. You have to fill in some fields before publishing, such as the description and some screenshots, logo's etc. If you have an Android phone, you can download the game [here via Android market](https://market.android.com/details?id=net.semantic.games&amp;feature=search_result).
 
 The nice thing about Android market is that you get insight into the users of your application. It shows if the users get any errors, which Android versions they use, and the type of devices they have. For example, the screenshot below shows the type of devices that have downloaded Androng.
 
-![Which phones run your application](../../../img/Insight_Phones.png)
+![Which phones run your application](../../../images/Insight_Phones.png)
 
 #Source code
 

@@ -10,7 +10,7 @@ tags:
 
 On a project I am working on, we use WCF to communicate from an internet client to a Windows service. WCF automatically lets the windows identity flow from the client to the server. This is great but it is not the case for the culture of the client. If the culture would also flow from the client to the server reading localised data from, for example, the resource file could be completely transparent for the application. This example demonstrates how you could implement such a solution by implementing a custom WCF <code>MessageInspector</code>.
 
-![Screenshot](../../../img/CultureServer.png)
+![Screenshot](../../../images/CultureServer.png)
 
 #Background
 
@@ -113,6 +113,6 @@ return factory.CreateChannel();
 
 #Points of Interest
 
-I did not know for sure that the thread running the <code>AfterReceiveRequest </code>would be the same as the thread running the actual server code. In this case it was. If you need the data from the message header in another part of the WCF pipeline, you should add the data to the properties collection of the request.
+I did not know for sure that the thread running the <code>AfterReceiveRequest</code> would be the same as the thread running the actual server code. In this case it was. If you need the data from the message header in another part of the WCF pipeline, you should add the data to the properties collection of the request.
 
 After I found the right extension point, the actual implementation was simple. There are many extension points, finding the right one is the difficult part.

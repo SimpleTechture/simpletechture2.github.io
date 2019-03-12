@@ -50,7 +50,7 @@ As I am planning to write three applications I took some time to think about the
 
 The NFunq dependency injection framework performs the actual injections of the instances.
 
-![structure](../../../img/BlueHour3.png)
+![structure](../../../images/BlueHour3.png)
 
 How data is retrieved and visualized on to the view can be best described using an example. The image above shows the classes that play a role in this process. The class shown on the left is the view while the classes on the right perform retrieving data from an external or internal service.
 
@@ -168,7 +168,7 @@ The command gets bind to the ApplicationBarCommand in the XAML.
 
 Unit testing is possible using the Silverlight Unit testing framework for Windows Phone. This framework is translated from the original Silverlight unit testing framework. You need a separate Windows Phone aplication to perform the actual testing. Although this is not ideal as it tends to break your TDD rythm, it is better than nothing.
 
-![Test runner](../../../img/BlueHour_TestRunner.png)
+![Test runner](../../../images/BlueHour_TestRunner.png)
 
 Jeff Wilcox describes the release of this framework on his [blog](http://www.jeff.wilcox.name/2010/05/sl3-utf-bits/). I just converted the already existing test cases of the class that calculates the sunrise and sunset times to using this framework.
 
@@ -309,7 +309,7 @@ public bool IsLocationServiceAllowed
 {% endhighlight %}
 
 This IsLocationServiceAllowed property from the ViewModel is then databound to the ToggleSwitch to let the user adjust the setting.
-![Settings](../../../img/BlueHour_Settings.png)
+![Settings](../../../images/BlueHour_Settings.png)
 
 #Location Services
 
@@ -326,7 +326,7 @@ The accuracy parameter of the constructor can have two possible values <code>Geo
 
 I wanted the Blue Hour application to be available in two languages, English and Dutch (my native language) therefore the application had to be localized. As with all Microsoft.Net applications that you want to localize it starts with adding all localizable strings to a resource file. 
 
-![Resources](../../../img/Screenshot_Resources.jpg)
+![Resources](../../../images/Screenshot_Resources.jpg)
 
 The default language of BlueHour is English, therefore the key value pairs in the AppResources.resx file are in the english language. All other supported languages should be added according to the following file name format AppResources.[culture].resx. The cultures that the application supports should be specified in the project file of the application. This is a bit of a nuisance, you have to unload the project in visual studio and edit the xml of the project manually. The SupportedCultures element in the application should include the languages that are supported by the application. Multiple cultures can be specified by separating them using a semicolon.
 
@@ -338,7 +338,7 @@ The default language of BlueHour is English, therefore the key value pairs in th
 
 By adding the supported cultures of your application to the project file, the application will automatically switch to that location if you switch the phones Display language via the Region+language page.
 
-![Change Regional Language](../../../img/Change_Display_Language.png)
+![Change Regional Language](../../../images/Change_Display_Language.png)
 
 To reference a resource from the sourcecode I introduce a new class called <code>LocalizedStrings</code> which is used from the Xaml views.
 
@@ -492,7 +492,7 @@ mtiks.Instance.postEventAttributes("REFRESH");
 
 mTiks then registers the amount of times this event gets fired from your application. Once you have this integration in place, mTiks presents you a nice dashboard with the analytics information of your app.
 
-![mTiks](../../../img/Screenshot_mTiks.jpg)
+![mTiks](../../../images/Screenshot_mTiks.jpg)
 
 #Certify Application
 
@@ -504,13 +504,13 @@ One thing you have to update is the capabilities section in the WMAppManifest.xm
 
 As I stated in the introduction this article was written just after I submitted Blue Hour for the second time to the market. The first time I submitted the app it failed certification. The test report I got back from the test team stated that I did not include a privacy policy.
 
-![Certification result](../../../img/Certification_Result.jpg)
+![Certification result](../../../images/Certification_Result.jpg)
 
 I missed this as it is clearly stated in the [requirements](http://msdn.microsoft.com/en-us/library/hh184841%28v=vs.92%29.aspx). 2.7.2 states that **"The privacy policy of your application must inform users about how location data from the Location Service API is used and disclosed and the controls that users have over the use and sharing of location data. This can be hosted within or directly linked from the application."**  
 
 What I did was add a description to the settings screen that states what the application does with the retrieved location data and that the user can disable or enable it.
 
-![Settings](../../../img/BlueHour_Settings_Screenshot.png)
+![Settings](../../../images/BlueHour_Settings_Screenshot.png)
 
 I stripped out certain parts from the source code such as my application key for  mtiks framework. The source code of Blue Hour is available for download hopefully will make developing your first Windows Phone application a little bit easier.
 
@@ -520,4 +520,4 @@ The application is available in the [marketplace](http://windowsphone.com/s?appi
 
 Below shows a photo that I took during the Blue Hour. It is taken in the Netherlands in the city of Rotterdam.
 
-![Rotterdam Blue Hour](../../../img/BlueHour.jpg)
+![Rotterdam Blue Hour](../../../images/BlueHour.jpg)

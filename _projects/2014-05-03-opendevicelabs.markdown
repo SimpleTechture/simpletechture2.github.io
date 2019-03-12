@@ -1,7 +1,10 @@
 ---
-layout: post
-title: Open Device Lab
+title: 'Open Device Lab'
+subtitle: 'App Development'
+date: 2014-05-03 00:00:00
+featured_image: '/images/william-hook-476194-unsplash.jpg'
 tags:
+- Apps
 - App Development
 ---
 
@@ -9,7 +12,7 @@ I recently visited an Open Device Lab to test my [Windows 8 app](http://apps.mic
 
 Users of my app where complaining that the touch functionality did not work fluently. Although, I tested the app thoroughly in the emulator I had never tested it on a touch device. I do not own one. 
 
-![Telling Time](../../../img/tellingtime.jpg)
+![Telling Time](../../../images/tellingtime.jpg)
 
 Thanks to the [open device lab in Rotterdam](http://odl.vicompany.nl/ "VI Company Open Device Lab"), I was able to test the application and found out that the handles of my clock were too small. My app helps children to learn to tell the time by letting them move the handles of a clock. By enlarging the handles of the clock I could improve the touch experience of the app.
 

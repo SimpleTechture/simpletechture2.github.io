@@ -9,7 +9,7 @@ Use the following 10 tips to improve your **Software Architecture Design**. I us
 
 #1. Based on requirements
 
-![Requirements](../../../img/Requirements1.jpg)
+![Requirements](../../../images/Requirements1.jpg)
 
 You should base your software architecture design on the requirements of your stakeholders. An architecture focuses on **non-functional requirements**. I see many software architecture designs based on purely technical motives. Each part of your design should be based on business requirements. You as an architect should translate these requirements into the **architectural design decisions**. If the stakeholder values **maintainability**, you could use the **layer pattern** to separate several parts of the application. If performance is important, maybe layering is not a good solution. An exhaustive list of non-functional requirements can be found at [ISO 9126](http://en.wikipedia.org/wiki/ISO/IEC_9126) and at [QUINT](http://www.serc.nl/quint-book/). If you do not use Non-functional requirements in your organization but want to introduce them, take a look at a [presentation](http://www.slideshare.net/kalkie/letsgrow-nonfunctional-requirements) I did previously.
 
@@ -17,7 +17,7 @@ From the Non-functional requirements or quality attributes you have to create th
 
 #2. Rationale, rationale, rationale
 
-![Rationale](../../../img/Rationale1.jpg)
+![Rationale](../../../images/Rationale1.jpg)
 
 The most important aspect of your architecture description is the recording of your **rationale** behind design decisions. It is important for a reader of the architecture description to understand the reason why you made a specific decision. Make your assumptions explicit and add them to the description. Assumptions may be invalid now or later but at least it will be clear how you came to that decision. It make communicating with your team much easier if you share you rationale.
 
@@ -25,7 +25,7 @@ Recording your rationale becomes much easier if your non-functional requirements
 
 #3. Don’t Repeat Yourself (DRY)
 
-![Repetition](../../../img/Repetition.jpg)
+![Repetition](../../../images/Repetition.jpg)
 
 **Don’t Repeat Yourself (DRY)** or **Duplication Is Evil (DIE)** come from software-engineering in general. The DRY principle is stated as “Every piece of knowledge must have a **single**, unambiguous, authoritative representation within a system”. You can apply this principle on many levels; Architecture, Design, Testing, Source Code and Data. For me this is one of the most difficult things to uphold. You have to fight the repetition because it will slow you and your project down. The difficult part of this Repetition Creep as I call it is that it is introduced very slowly. The first repetition won’t hurt you directly, it will even gain some time. You are able to release the first version of the application somewhat quicker, but as I found it always shows up later and makes something else more difficult. At that moment you regret the decision to introduce repetition.
 
@@ -33,7 +33,7 @@ If you absolutely must add another copy of information make sure that you automa
 
 #4. Slicing the cake
 
-![Slicing the cake](../../../img/Slicingthecake.png)
+![Slicing the cake](../../../images/Slicingthecake.png)
 
 I struggled with naming this, but found **Slicing the cake** as it is called in Agile development the best description. By slicing the cake I mean that you design your architecture iterative in vertical slices. An architect implements or prototypes each vertical slice to confirm if it actually works. You should do this because architectures cannot be created on paper. It does not mean that you cannot use horizontal layering or any other pattern in your architecture. In the case of layering the horizontal layers are smaller.
 
@@ -46,7 +46,7 @@ When creating a software architecture design make sure that you prototype your d
 
 #6. Quantify
 
-![Measure](../../../img/Measure1.jpg)
+![Measure](../../../images/Measure1.jpg)
 
 This principle extends the first principle “Based on Requirements”. To be able to create a proper software architecture design you need to quantify your Non-functional requirements. It should be “fast” cannot be a requirement neither is maintainable or testable. How will you know if you have met these requirements?
 
@@ -68,7 +68,7 @@ When creating your software architecture design you should focus on the boundari
 
 #9. The Perfect is the enemy of the Good
 
-![Perfection](../../../img/Perfection1.jpg)
+![Perfection](../../../images/Perfection1.jpg)
 
 The phrase “The perfect is the enemy of the good” from [Voltaire](http://en.wikiquote.org/wiki/Voltaire) is also valid for software architecture design. How many times have you started a new project and thought I want this project to be perfect? And how many times have you actually found out that the project wasn’t perfect. Well, I think a project will never be perfect. There will always be problems or forgotten requirements.
 
@@ -76,7 +76,7 @@ Perfection is never possible. However you are able to create a good software arc
 
 #10. Align with your stakeholders
 
-![](../../../img/Stakeholders.jpg)
+![](../../../images/Stakeholders.jpg)
 
 Before you can create any type of system you need to identify your **stakeholders**. Each stakeholder has different needs of your software architecture and may require a different view. Software developers may need descriptions using **Unified Modeling Language (UML)** while business sponsors need a description in natural language. Operations and support staff for example may need other view such as context diagrams. There is a tension between creating all these views for stakeholders and principle **3. Don’t Repeat Yourself**. Each view essentially describe the same system and adds repetition. Therefore you should only add those descriptions that adds value for a specific stakeholder.
 

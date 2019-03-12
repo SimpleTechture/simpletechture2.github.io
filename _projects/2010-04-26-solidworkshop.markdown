@@ -18,9 +18,9 @@ These principles can help a software developer manage dependencies between softw
 
 These -ilities that Bob Martin refers to are the non functional requirements of a software product. I think that a software architecture is responsible for implementing the non functional or quality attributes of a software product. Therefore, I think that the SOLID design principles are one of the most fundamental rules for designing a robust software architecture. During the workshop we showed the following pictures to introduce a single principle. 
 
-- ![SOLID Single Responsibility Principle](../../../img/SingleResponsibilityPrinciple.jpg)
-- ![SOLID Open Closed Principle](../../../img/OpenClosedPrinciple.jpg)
-- ![SOLID Dependency Inversion Principle](../../../img/DependencyInversionPrinciple.jpg)
+- ![SOLID Single Responsibility Principle](../../../images/SingleResponsibilityPrinciple.jpg)
+- ![SOLID Open Closed Principle](../../../images/OpenClosedPrinciple.jpg)
+- ![SOLID Dependency Inversion Principle](../../../images/DependencyInversionPrinciple.jpg)
 
 Can you spot the principle just by looking at a picture?
 

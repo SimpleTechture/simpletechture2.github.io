@@ -21,7 +21,7 @@ This scenario has happened to me many times, and led me to thinking that there h
 
 To be able to use the dynamic proxy and its advantages, you have to structure your assemblies or classes somewhat different. Both the client and the server reference and use a separate assembly that contains the interface and the configuration of the WCF service. The picture below shows the idea:
 
-![Structure](../../../img/Divide_Assemblies.png)
+![Structure](../../../images/Divide_Assemblies.png)
 
 The assembly called "Interface + Configuration" contains the WCF configuration of the server, including the interface itself. By structuring your assemblies this way, it is not possible to forget changing the client when the interface changes. It simply won't compile!
 

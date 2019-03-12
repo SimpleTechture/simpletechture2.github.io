@@ -22,17 +22,17 @@ Digest Authentication was first described in [RFC 2069](http://www.ietf.org/rfc/
 
 Digest communication starts with a client that requests a resource from a web server. If the resource is secured with Digest Authentication, the server will respond with the http status code 401, which means Unauthorized.
 
-![Digest Authentication Communication](../../../img/DigestAuthenticationUsingWCFRest_1.png)
+![Digest Authentication Communication](../../../images/DigestAuthenticationUsingWCFRest_1.png)
 
 In the same response, the server indicates in the HTTP header with which mechanism the resource is secured. The HTTP header contains the following **WWW-Authenticate: Digest realm="realm", nonce="IVjZjc3Yg==", qop="auth"**. The first thing you should notice is the string **Digest** in the response, here the server indicates that the resource that was requested by the client is secured using Digest Authentication. Secondly, the server indicates the type of Digest Authentication algorithm to use by the client with **Quality Of Protection (QOP)** and the string called nonce which I will explain later in this article.
 
 An internet browser responds to this by presenting the user a dialog, in this dialog the user is able to enter his username and password. Note, that this dialog does not show the warning about transmitting the credentials in clear text as with a Basic Authentication secured site.
 
-![Digest Authentication Credentials Screen](../../../img/DigestAuthenticationUsingWCFRest_3.png)
+![Digest Authentication Credentials Screen](../../../images/DigestAuthenticationUsingWCFRest_3.png)
 
 When the user enters the credentials in this dialog, the browser requests the resource from the server again. This time, the client adds additional information to the HTTP header regarding Digest Authentication.
 
-![Digest Authentication Second](../../../img/DigestAuthenticationUsingWCFRest_2.png)
+![Digest Authentication Second](../../../images/DigestAuthenticationUsingWCFRest_2.png)
 
 The server validates the information and returns the requested resource to the client. The details of the response from the server and the additional request of the client will be described in the following part of this article.
 
@@ -128,7 +128,7 @@ Note that it is a request from the server, the client itself is allowed to choos
 
 The implementation with this article supports both **default/none** and auth. The class <code>DefaultDigestEncoder </code>and the class <code>AuthDigestEncoder </code>implement the default and the auth type of quality of protection. Both classes derive from <code>DigestEncodeBase </code>which holds common functionality.
 
-![DigestEncoder](../../../img/DigestAuthenticationUsingWCFRest_4.png)
+![DigestEncoder](../../../images/DigestAuthenticationUsingWCFRest_4.png)
 
 At runtime, the server instantiates both types of encoders and stores them in a dictionary with the qop algorithm as the key. 
 
