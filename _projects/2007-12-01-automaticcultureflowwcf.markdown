@@ -6,15 +6,15 @@ tags:
 - Culture
 ---
 
-#Introduction
+### Introduction
 
 On a project I am working on, we use WCF to communicate from an internet client to a Windows service. WCF automatically lets the windows identity flow from the client to the server. This is great but it is not the case for the culture of the client. If the culture would also flow from the client to the server reading localised data from, for example, the resource file could be completely transparent for the application. This example demonstrates how you could implement such a solution by implementing a custom WCF <code>MessageInspector</code>.
 
 ![Screenshot](../../../images/CultureServer.png)
 
-#Background
+### Background
 
-The given extension should only be used if you are controlling both ends of the wire (client and server). If you are only creating the server and care about interop you are better off using a more standard method like the one described in <a href="WSI18N.asp">Globalization Patterns in WCF (WS-I18N implementation)</a> by [Pablo Cibraro](http://www.codeproject.com/script/Articles/list_articles).
+The given extension should only be used if you are controlling both ends of the wire (client and server). If you are only creating the server and care about interop you are better off using a more standard method like the one described in[Globalization Patterns in WCF (WS-I18N implementation)](https://www.codeproject.com/Articles/15737/Globalization-Patterns-in-WCF-WS-I18N-implementati) by [Pablo Cibraro](https://www.codeproject.com/script/Membership/View.aspx?mid=120034).
 
 WCF has several extension points; in this example a custom <code>MessageInspector </code>is used. A custom <code>MessageInspector </code>can be used to inspect or modify messages as they pass through a WCF client or server object. To inspect or modify messages as they pass through a client, you should implement the <code>IClientMessageInspector </code>interface. To inspect or modify messages as they pass through a server, you should implement the <code>IDispatchMessageInspector </code>interface. The custom <code>MessageInspector </code>in this example implements both interfaces.
 
@@ -22,11 +22,11 @@ The custom <code>MessageInspector </code>adds a custom Message Header to the req
 
 To use the custom message inspector, a custom behaviour also needs to be created which implements <code>IEndpointBehavior</code>. This behaviour is then added to the behaviours collection of the WCF endpoint.
 
-#Using the Code
+#### Using the Code
 
 The solution is divided into four projects: the server, the client, the extension and the service interface. The interesting part is the extension project. In the example, the client sets the culture info of the current thread and calls a simple "hello world" method on the server. The server responds with a <code>Console.Writeline </code>with the culture of the running thread.
 
-#MessageInspector
+#### MessageInspector
 
 This is the custom Message Inspector where the <code>BeforeSendRequest </code>at the client adds the message header and the <code>AfterReceiveRequest </code>at the server extracts the custom header and sets the culture of the currently executing thread.
 
@@ -61,7 +61,7 @@ public class CultureMessageInspector :
   ...
 {% endhighlight %}
 
-#Custom Behaviour
+### Custom Behaviour
 
 The custom behaviour is created like this:
 
@@ -83,7 +83,7 @@ public class CultureBehaviour : IEndpointBehavior
   ...
 {% endhighlight %}
 
-#Creating the Service Host
+### Creating the Service Host
 
 When creating the <code>ServiceHost</code>, the custom behaviour is added to the behaviours collection of the <code>ServiceEndPoint</code>. This could also be configured in the configuration file.
 
@@ -97,7 +97,7 @@ ServiceEndpoint endPoint =
 endPoint.Behaviors.Add(new CultureBehaviour());
 {% endhighlight %}
 
-#Creating the Client Channel
+### Creating the Client Channel
 
 When creating the client channel, the custom behaviour is also added to the behaviours collection of the <code>ServiceEndPoint</code>. This could also be configured in the configuration file.
 
@@ -111,7 +111,7 @@ factory.Endpoint.Behaviors.Add(new CultureBehaviour());
 return factory.CreateChannel();
 {% endhighlight %}
 
-#Points of Interest
+### Points of Interest
 
 I did not know for sure that the thread running the <code>AfterReceiveRequest</code> would be the same as the thread running the actual server code. In this case it was. If you need the data from the message header in another part of the WCF pipeline, you should add the data to the properties collection of the request.
 

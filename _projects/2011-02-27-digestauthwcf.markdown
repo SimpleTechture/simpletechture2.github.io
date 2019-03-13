@@ -16,7 +16,7 @@ This article explains a different authentication mechanism called Digest Authent
 
 Digest Authentication is available on multiple web servers and supported by multiple internet browsers. The drawback when using Digest Authentication with Internet Information server is that it automatically authenticates credentials against active directory. This article describes an implementation which enables you to secure a WCF REST service with Digest Authentication and authenticate against any back-end.
 
-Digest Authentication was first described in [RFC 2069](http://www.ietf.org/rfc/rfc2069.txt) as an extension to HTTP Basic Authentication. Later, the verification algorithm and security was improved by [RFC 2617](http://www.ietf.org/rfc/rfc2617.txt) . This is the current stable specification. The implementation in this article is based on that [RFC 2617](http://www.ietf.org/rfc/rfc2617.txt) specification. Digest Authentication is more secure because it uses [MD5 cryptographic hashing](http://en.wikipedia.org/wiki/MD5) and the use of a nonce to discourage cryptanalysis.
+Digest Authentication was first described in [RFC 2069](https://www.ietf.org/rfc/rfc2069.txt) as an extension to HTTP Basic Authentication. Later, the verification algorithm and security was improved by [RFC 2617](https://www.ietf.org/rfc/rfc2617.txt) . This is the current stable specification. The implementation in this article is based on that [RFC 2617](https://www.ietf.org/rfc/rfc2617.txt) specification. Digest Authentication is more secure because it uses [MD5 cryptographic hashing](https://en.wikipedia.org/wiki/MD5) and the use of a nonce to discourage cryptanalysis.
 
 #Overview of Digest Communication
 
@@ -120,7 +120,7 @@ By using a time stamp and the IP address in the nonce, we make sure that the req
 
 Digest Authentication allows the server to ask which algorithm the client should use to encrypt the credentials of the user. Digest Authentication allows the following Quality Of Protection.
 
-- **none** = Default protection compatible with [http://www.ietf.org/rfc/rfc2069.txt](RFC 2069)
+- **none** = Default protection compatible with [RFC 2069](https://www.ietf.org/rfc/rfc2069.txt)
 - **auth** = Increased protection that includes a client nonce and a client nonce counter
 - **auth-int** = Increased protection and integrity that included all of auth and a hash of the contents of the body
 
@@ -153,7 +153,7 @@ This enables the server to easily switch between different types of encoders at 
 
 ##None or Default QOP
 
-When an internet browser receives 401 HTTP status code with Digest in the authentication header, it will show a dialog for entering the username and password. When the client uses the **default qop** which is compatible with [RFC 2069](http://www.ietf.org/rfc/rfc2069.txt), the client encrypts the user name and password as follows.
+When an internet browser receives 401 HTTP status code with Digest in the authentication header, it will show a dialog for entering the username and password. When the client uses the **default qop** which is compatible with [RFC 2069](https://www.ietf.org/rfc/rfc2069.txt), the client encrypts the user name and password as follows.
 
 {% highlight csharp %}
   HA1 = MD5( username : realm : password);
@@ -234,4 +234,4 @@ If you want to secure your own WCF REST service with Basic Authentication using 
 
 #Points of Interest
 
-The provided source code is developed using TDD, and uses the [NUnit framework](http://nunit.org/) for creating and executing tests. [Rhino Mocks](http://www.ayende.com/projects/rhino-mocks.aspx) is used as a mocking framework inside the unit tests.
+The provided source code is developed using TDD, and uses the [NUnit framework](https://nunit.org/) for creating and executing tests. [Rhino Mocks](https://meisinger2.wordpress.com/2013/05/19/rhino-mocks-new-home/) is used as a mocking framework inside the unit tests.

@@ -121,7 +121,7 @@ It is really easy to integrate ads into your windows phone application. There ar
 
 - [Microsoft PubCenter](http://pubcenter.microsoft.com)
 - [AdDuplex](http://www.adduplex.com/)
-- [Google AdMob](www.admob.com/)
+- [Google AdMob](https://admob.google.com/home/)
 - [Inner-Active](http://inner-active.com/)
 - [MobFox](http://www.mobfox.com/)
 - [Smaato](http://www.smaato.com/)

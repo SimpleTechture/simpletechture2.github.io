@@ -15,7 +15,7 @@ Finally, we have all the parts in place to start talking about scaling this Blog
 
 As you can see, we are going to use a load balancer to be able to redirect the web requests to a possible pool of servers/containers. In this case I use Nginx because it offers great flexibility and is widely known.
 
-I will not create my own docker container with nginx but will reuse the container which [https://github.com/jwilder/nginx-proxy](Jason Wilder) created. The container he created has some interesting functionality in relation with docker, but later more about that.
+I will not create my own docker container with nginx but will reuse the container which [Jason Wilder](https://github.com/jwilder/nginx-proxy) created. The container he created has some interesting functionality in relation with docker, but later more about that.
 
 First, I will set up the configuration using the official nginx docker image ```dockerfile/nginx``` but before I start that I need to change my [existing fig configuration](http://www.simpletechture.com/fiddling-with-fig/) to start another Ghost container. 
 {% highlight javascript %}
