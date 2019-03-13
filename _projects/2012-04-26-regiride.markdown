@@ -69,7 +69,7 @@ I made some changes to the list of tools and frameworks that I used for developi
 * [MTiks](http://www.mtiks.com/) (Analytics framework)
 * [SimpleIoc](http://mvvmlight.codeplex.com/) (DI container included with MVVM Light) instead of NFunq
 
-Why did I switch from Prism to MVVM Light? I saw a [video of a presentation](href="http://channel9.msdn.com/Events/MIX/MIX11/OPN03) of Laurent Bugnion called Deep Dive MVVM in which he talked about how to set up your xaml based application when using the MVVM pattern. In this video he used the MVVM Light framework which he implemented. The one thing that got my attention was the way how the framework handled the OnPropertyChanged events.
+Why did I switch from Prism to MVVM Light? I saw a [video of a presentation](http://channel9.msdn.com/Events/MIX/MIX11/OPN03) of Laurent Bugnion called Deep Dive MVVM in which he talked about how to set up your xaml based application when using the MVVM pattern. In this video he used the MVVM Light framework which he implemented. The one thing that got my attention was the way how the framework handled the OnPropertyChanged events.
 Instead of calling the <code>propertychanged</code> event using a string, the MVVMLight framework uses an expression to define a reference to the property. This way you get compile time checking instead of the normalrun-time. I found this to be an elegant solution. See below an example from RegiRide. It will introduces a slight overhead as the MVVM Light uses reflection to get the actual name of the property as a string. 
 
 {% highlight csharp %}
@@ -334,7 +334,7 @@ public void Export()
 
 {% endhighlight %}
 The <code>dropNetClient</code> from the DropNet library is responsible for the connection to the Dropbox account. The <code>Export</code> method checks if the current user is authenticated and if so the csv file is generated and uploaded to the Dropbox of the user using an unique file name. The authentication for the Dropbox account is handled by DropNet and uses the webbrowser control.
-![Splashscreen RegiRide](../../../images/RegiRide5.png)
+![Splashscreen RegiRide](../../../images/RegiRide1.jpg)
 
 Once the user allows the application to access the Dropbox the access token is save into the isolated storage. This way the user only has to allows once and there is no need to store the users credentials.
 
