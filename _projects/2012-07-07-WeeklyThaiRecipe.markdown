@@ -2,7 +2,7 @@
 title: 'Weekly Thai Recipe'
 subtitle: 'App Development'
 date: 2014-04-02 00:00:00
-featured_image: '/images/.jpg'
+featured_image: '/images/Food_Patrick_Kalkman_03_DSC6875.jpg'
 tags:
 - App Development
 - Apps
