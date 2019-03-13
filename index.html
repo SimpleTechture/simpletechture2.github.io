@@ -1,7 +1,7 @@
 ---
 layout: default
-title: A stunning personal blog Jekyll theme
-description: Journal is a stunning personal blog Jekyll theme with an image-focused design.
+title: SimpleTechture
+description: IT Architecture should be simple
 featured_image: /images/demo/demo-portrait.jpg
 ---
 
@@ -41,12 +41,14 @@ featured_image: /images/demo/demo-portrait.jpg
 
 	{% if paginator.previous_page %}
 	<div class="pagination__prev">
-		<a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="button button--large"><i class="fa fa-angle-left" aria-hidden="true"></i> <span>Newer Posts</span></a>
+		<a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="button button--large"><i class="fa fa-angle-left"
+			 aria-hidden="true"></i> <span>Newer Posts</span></a>
 	</div>
 	{% endif %}
 	{% if paginator.next_page %}
 	<div class="pagination__next">
-		<a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="button button--large"><span>Older Posts</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+		<a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="button button--large"><span>Older Posts</span>
+			<i class="fa fa-angle-right" aria-hidden="true"></i></a>
 	</div>
 	{% endif %}
 
