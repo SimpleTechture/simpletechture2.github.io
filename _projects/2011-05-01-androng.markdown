@@ -1,40 +1,43 @@
 ---
-layout: post
-title: Androng, a pong clone for Android
+title: 'Androng, a pong clone for Android'
+subtitle: 'Android App Development'
+date: 2014-05-11 00:00:00
+featured_image: '/images/conor-samuel-777369-unsplash.jpg'
 tags:
+- App Development
+- Apps
 - Android
-- App
 ---
 
 Source on [Github](https://github.com/kalkie/Androng-Android)
 
 |![Screenshot 1](../../../images/Screenshot_Androng_1.png)|![Screenshot 2](../../../images/Screenshot_Androng_2.png)|
 
-#Introduction
+### Introduction
 
 This article describes how I developed and published Androng, a clone of the classic game Pong that runs on Android. I developed the game using Java and it supports a single and two-player modes. I wanted to share how I developed the game from start to finish. By finish I mean actually publishing the game on the Android market. Above are two in-game screenshots.
 
 ![Screenshot of the original version of Pong by Atari](../../../images/Screenshot_Original_Pong.png)
 
-##Pong
+#### Pong
 
 Pong is a game that was originally developed as an electronic version of ping pong. Atari originally created the game in 1972. The goal is to defeat your opponent by getting a higher score. You have to keep the ball in play and hope that your opponent misses it. In my implementation, whoever reaches 10 points first wins the game.
 
 ![Android](../../../images/Android_Logo.jpg)
 
-##Android
+#### Android
 
 Android is an Operating System for mobile devices based on the Linux 2.6 kernel. Android Inc. developed Android, and Google bought Android in 2005. Although it is an Operating System for mobile devices, the Operating System itself is big. It consists of more than 12 million lines of code. Android supports a multitude of different mobile devices, and a special version of Android (version 3.0 Honeycomb) is available for tablet devices.
 
-You can develop Android apps in [C++](http://developer.android.com/sdk/ndk/index.html) and [.NET](http://mono-android.net/) but most Android development is done in Java. The reason that I used Java is that it is close to C#, the language I use during my day job. To develop Java applications for Android, you need the [Android SDK](http://developer.android.com/sdk/index.html), the [Java SDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html), and an Integrated Development Environment (IDE) such as [Eclipse](http://www.eclipse.org/downloads/) or [IntelliJ](http://www.jetbrains.com/idea/download/).
+You can develop Android apps in [C++](http://developer.android.com/sdk/ndk/index.html) and [.NET](https://visualstudio.microsoft.com/xamarin/) but most Android development is done in Java. The reason that I used Java is that it is close to C#, the language I use during my day job. To develop Java applications for Android, you need the [Android SDK](http://developer.android.com/sdk/index.html), the [Java SDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html), and an Integrated Development Environment (IDE) such as [Eclipse](http://www.eclipse.org/downloads/) or [IntelliJ](http://www.jetbrains.com/idea/download/).
 
 I used the community edition of IntelliJ, which is free. This is because during my day job I use Visual Studio and [Resharper](http://www.jetbrains.com/resharper/) which share many similarities with IntelliJ. Resharper and IntelliJ share a lot of keyboard shortcuts, and they are both developed by the company [JetBrains](http://www.jetbrains.com/). Note, that although Java can be used for development, not all Java libraries are available, only those supported by the Android runtime.
 
-#Android game development
+#### Android game development
 
 When you start developing games on Android, you have three possible graphics implementations. You can use the drawable package and use a <code>view</code> or a <code>canvas</code>. On the other hand, you can use the [OpenGL ES](http://www.khronos.org/opengles/) API that is a special implementation of the [OpenGL](http://www.opengl.org/) specification for embedded devices. OpenGL ES includes support for 3D graphics. For Androng, I decided to use the graphics package and draw using a <code>canvas</code>. The canvas package is fast enough to support the animation and movement needed for this game.
 
-#Activities
+#### Activities
 
 An Android application revolves around Activities and Views. An activity is a part of the application that provides a screen to interact with. An application can consist of multiple activities. Android starts the activity specified in the manifest of an application. This manifest is important, it is a configuration file that specifies the information the system needs before it can start your application. For example, which permissions are necessary for the application to run. When starting, Android calls the <code>onCreate</code> method of the specified activity. The source code below shows the main activity of Androng. All activities should derive from the <code>Activity</code> class.
 
@@ -56,7 +59,7 @@ public class AndrongActivity extends Activity
 }
 {% endhighlight %}
 
-#Views
+#### Views
 
 A view creates the user interface of an activity and derives from the <code>View</code> class. A total view can consist of view groups and views. View groups are used to group views. They follow the Composite design pattern. The user interface of an application can consist of multiple views, a so-called hierarchy of views. You can use code or a resource file to define the layout of a view. The flexibility of your user interface increases by using a resource layout file. It becomes easier to maintain and include support for localisation. The layout resource file is implemented using XML. The resource file below shows the layout of Androng:
 
@@ -98,7 +101,7 @@ Other layout types are possible. There is a <code>LineairLayout</code>, a <code>
 
 We now have a user interface, let's see if we can draw resources to the screen.
 
-#Drawing using Canvas
+#### Drawing using Canvas
 
 Before you can draw a resource on to a canvas, you need to have a resource to draw and acquire a canvas to draw upon. The <code>Canvas</code> is acquired using a <code>SurfaceView</code>, this is a drawable surface that lies beneath the active view window. For Androng, I implemented a class named <code>AndrongSurfaceView</code> which extends <code>SurfaceView</code>, this is the same view as mentioned in the layout file. The source code below shows a part of the <code>AndrongSurfaceView</code> class.
 
@@ -138,7 +141,7 @@ Bitmap backgroundImage = BitmapFactory.decodeResource(resources, R.drawable.back
 canvas.drawBitmap(backgroundImage, 0, 0, null);
 {% endhighlight %}
 
-#Animation
+#### Animation
 
 In Androng, the ball is animated. The animation consists of 12 frames, every frame rotates the ball 30 degrees. When the ball hits a paddle or the side, the animation reverses. This creates a nice animation effect of the ball in the game.
 
@@ -178,11 +181,11 @@ public class DrawableResourceCollection extends LinkedList<drawable>
 
 When the draw method of the <code>Sprite</code> is called, a <code>Drawable</code> resource is retrieved from the <code>DrawableResourceCollection</code> and is drawn on the canvas. The <code>GetNewFrame()</code> determines the index of the next frame from the resource. The <code>GetNewFrame()</code> method uses a boolean <code>animationForward</code> which as the name implies determines if the animation is moving forward or backwards. This way we can easily reverse the animation direction by changing this boolean from <code>true</code> to <code>false</code>, or vice versa.
 
-#Frame speed independent animation
+#### Frame speed independent animation
 
 Android runs on many devices, each with their own hardware specification. This means that the processing speed of the devices that run your application will be different. This in its turn means that the animation speed of a sprite, such as the ball of the Androng game, differs per device. This is an unwanted situation, game play could differ per device. Therefore, we want to animate the game independently of the processing power of the device. We achieve this by incorporating time into the application and specifying animation speed in pixel movement or animation speed per time.
 
-#Getting high-resolution timing from Android
+#### Getting high-resolution timing from Android
 
 There are three different ways to get time from the Android OS:
 
@@ -212,11 +215,11 @@ while (isRunning)
 
 The result, the variable <code>timeNeededToDrawFrame</code>, is sent to all the objects that make up the game screen. For example, the ball receives this and has a speed of two horizontal pixels per second. By multiplying this with the time needed to draw this frame, we get the number of pixels that the ball should move. The same is done with the vertical speed. This enables frame speed independent animation.
 
-#Collision detection
+#### Collision detection
 
 Most, if not all games need collision detection. There are many ways of detecting if two game objects collide. Androng combines both the bounding box and the pixel methods.
 
-#Bounding box hits detection
+#### Bounding box hits detection
 
 The bounding box method can be easily illustrated with the following picture:
 
@@ -241,7 +244,7 @@ The bounding box collision detection algorithm is a fast way to detect a collisi
 
 ![False detection when using bounding box method](../../../images/Bounding_Box_Hit_Detection_False_Positive.png)
 
-#Pixel perfect detection
+#### Pixel perfect detection
 
 We could solve this by using a bounding circle for the ball, but I wanted to solve this using a more generic approach, using the pixels of the sprite. Therefore, when the bounding box algorithm detects a collision, we scan the overlap in both sprites for pixels. If the same location in both sprites contains a pixel (color != 0), we have a collision.
 
@@ -249,7 +252,7 @@ We could solve this by using a bounding circle for the ball, but I wanted to sol
 
 The algorithm determines the width and height of the overlapping box and where in each sprite the box is. The algorithm scans each pixel in the box for a collision. Reading the pixel from the bitmap is possible by calling the <code>getBitmap()</code> method on the Drawable. See the method <code>collideswith</code> of the sprite class in the source code for the full collision detection routine.
 
-#Sound management
+##### Sound management
 
 Androng plays a sound whenever the ball collides with a paddle, the wall, or when a player scores. Playing a sound using Android is easy. The media player or Sound Pool classes can play sounds. I used the Sound Pool classes because they offer more flexibility. Playing sounds using the Sound Pool classes involves the udioManager; the AudioManager is a so called Android system service. The source code below shows how to get the AudioManager system service and play the media file "hit". Hit is played when the ball hits a paddle or the side.
 
@@ -259,9 +262,9 @@ SoundPool mSoundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
 mSoundPool.play(R.raw.hit, streamVolume, streamVolume, 1, 0, 1);
 {% endhighlight %}
 
-All the sounds of the game are pre-loaded into a <code>SoundPoolMap</code> and are played from this <code>SoundPoolMap</code>. All sound management methods are grouped into a single class <code>SoundManager</code>; see the source code for the class. The class is based on an example provided by [Stephen Flockton](http://www.droidnova.com/creating-sound-effects-in-android-part-1,570.html), who writes a blog around Android development.
+All the sounds of the game are pre-loaded into a <code>SoundPoolMap</code> and are played from this <code>SoundPoolMap</code>. All sound management methods are grouped into a single class <code>SoundManager</code>; see the source code for the class. The class is based on an example provided by Stephen Flockton.
 
-#Input management
+#### Input management
 
 The game can be controlled using the touch screen of an Android device, this is called the touch mode. The touch mode is activated if you touch a button on the screen with your finger. Handling touch mode events is as simple as overriding the <code>onTouchEvent</code> of the SurfaceView. The signature of <code>onTouchEvent</code> is shown below:
 
@@ -278,7 +281,7 @@ float yPosition1 = event.getY(pointerIndex);
 
 <code>xPosition1</code> and <code>yPosition1</code> are used to place the paddle on the screen.
 
-#Notifications
+#### Notifications
 
 Androng uses Toast notifications to tell the user about certain events such as how to start the game and which player has won the game. A toast notification is a message that pops up on the surface of the window. The message automatically fades in and out and stays on the screen for a predetermined amount of time. The following code places a toast notification on the Androng game screen.
 
@@ -291,11 +294,11 @@ toast.show();
 
 The constant <code>Toast.LENGTH_LONG</code>, according to the Android documentation, will say to Android that the text notification should be shown for a long period. The default, <code>Toast.LENGHT_LONG</code>, corresponds to 3.5s. <code>Show()</code> will actually show the text on the screen.
 
-#Application life cycle management
+#### Application life cycle management
 
 As Android is an Operating System for mobile devices, it needs special attention for managing the scarce resources of such a device. Each Android application runs in its own process and is able to perform a specific task. A task can consists of multiple activities. Each Android application should manage the Application lifecycle. For example, it is possible that the Android OS decides to suspend or destroy your application when it needs extra resources. Therefore, your application should be able to save and restore its state when this is needed.
 
-#Activity life cycle
+#### Activity life cycle
 
 As mentioned before, an Android application consists of activities; it is in these activities you should manage your application's lifecycle. There are three possible scenarios possible for starting or restarting your application.
 
@@ -310,7 +313,7 @@ Note that when you change the orientation of an Android device, your application
 
 For the first version of Androng, I decided not to save the state of the game when the game is destroyed by the Android Operating System. When the game is paused and restarts, I simply restart the Androng game thread.
 
-#Restart thread
+#### Restart thread
 
 Drawing of the game screen and physics calculation runs on a separate thread. This <code>AndrongThread</code> derives from <code>Thread</code>.
 
@@ -377,7 +380,7 @@ public void surfaceCreated(SurfaceHolder surfaceHolder)
 
 The method tries to start the thread; when it fails, the exception handler creates a new thread and starts the newly created thread.
 
-#Android Market
+#### Android Market
 
 I wanted to publish Androng on the Android Market. Android Market is an open distribution platform for Android applications. Open means that your applications are not policed and there is no approval process. The visibility of your application depends on the rating you get from customers. Android Market is not the only distribution platform for Android applications; another publication channel is Amazon. Currently, the Amazon market is only open to customers from the United States.
 
@@ -385,17 +388,17 @@ There is a one time $25 registration fee before you can publish your games on th
 
 ![Publish your application on Android market](../../../images/Publish_Android_Market.png)
 
-The community edition of IntelliJ gives you the opportunity to package the application. Before you publish your application, you must sign the application using a public private key combination. Updates of the application must use the same key for signing. This package with the <em>.apk</em> extension can be published on the Android Market. You have to fill in some fields before publishing, such as the description and some screenshots, logo's etc. If you have an Android phone, you can download the game [here via Android market](https://market.android.com/details?id=net.semantic.games&amp;feature=search_result).
+The community edition of IntelliJ gives you the opportunity to package the application. Before you publish your application, you must sign the application using a public private key combination. Updates of the application must use the same key for signing. This package with the <em>.apk</em> extension can be published on the Android Market. You have to fill in some fields before publishing, such as the description and some screenshots, logo's etc.
 
 The nice thing about Android market is that you get insight into the users of your application. It shows if the users get any errors, which Android versions they use, and the type of devices they have. For example, the screenshot below shows the type of devices that have downloaded Androng.
 
 ![Which phones run your application](../../../images/Insight_Phones.png)
 
-#Source code
+#### Source code
 
 The source code of Androng is available on [Github](https://github.com/kalkie/Androng-Android). If you use the community edition of IntelliJ, you can open the project file. Otherwise, you can open the individual source or Java files.
 
-#Next version
+#### Next version
 
 For the next version of Androng, I have the following features planned, in no particular order.
 
