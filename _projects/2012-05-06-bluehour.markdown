@@ -1,9 +1,12 @@
 ---
-layout: post
-title: Blue Hour
+title: 'Blue Hour'
+subtitle: 'App Development'
+date: 2012-05-06 00:00:00
+featured_image: '/images/darkroomsg-154198-unsplash.jpg'
 tags:
-- Windows Phone
 - App Development
+- Apps
+- Windows Phone
 ---
 
 [Source on GitHub](https://github.com/kalkie/BlueHour-WP)
