@@ -1,13 +1,15 @@
 ---
-layout: post
-title: Improve your Software Architecture
+title: '10 tips to improve your Software Architecture'
+subtitle: 'Software Architecture'
+date: 2010-05-09 00:00:00
+featured_image: '/images/pavan-trikutam-1660-unsplash.jpg'
 tags:
 - Software Architecture
 ---
 
 Use the following 10 tips to improve your **Software Architecture Design**. I use these 10 tips or guidelines daily and they have helped me creating high quality Software Architectures. Describing your software architecture design is useful for any type of project, it will share the design of the system among your stakeholder.
 
-#1. Based on requirements
+### #1. Based on requirements
 
 ![Requirements](../../../images/Requirements1.jpg)
 
@@ -15,7 +17,7 @@ You should base your software architecture design on the requirements of your st
 
 From the Non-functional requirements or quality attributes you have to create the right design. While you could create this from scratch there are many examples in the form of design patterns or architectural patterns. A design or architectural pattern expresses a relation between a problem and a solution. Although we often think that our problem is unique this is often not the case. If you take a step back you will see that many of our problems already have been solved using existing patterns. Two books that I can recommend are *[Pattern-Oriented Software Architecture](http://www.amazon.com/Pattern-Oriented-Software-Architecture-System-Patterns/dp/0471958697)* and *[Design Patterns](http://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612)*. Both books contain a catalog full of patterns. Each pattern describes the problem it solves and in which context it can be used. There are also many online pattern source on the web such as [this one on Wikipedia](http://en.wikipedia.org/wiki/Architectural_pattern_(computer_science)) and [this from The OpenGROUP](http://www.opengroup.org/architecture/togaf8-doc/arch/chap28.html)
 
-#2. Rationale, rationale, rationale
+### #2. Rationale, rationale, rationale
 
 ![Rationale](../../../images/Rationale1.jpg)
 
@@ -23,7 +25,7 @@ The most important aspect of your architecture description is the recording of y
 
 Recording your rationale becomes much easier if your non-functional requirements are explicit. It will be much clearer if you describe that you created several components to increase the **testability** because testability is the an important requirements. Do describe the **Why** and **How** in your** software architecture design**
 
-#3. Don’t Repeat Yourself (DRY)
+### #3. Don’t Repeat Yourself (DRY)
 
 ![Repetition](../../../images/Repetition.jpg)
 
@@ -31,7 +33,7 @@ Recording your rationale becomes much easier if your non-functional requirements
 
 If you absolutely must add another copy of information make sure that you automatically generate that copy of the information. It will make your live so much easier in the future. One thing that helps to fight repetition is to store the data where it belongs. This seems logical and is the basis of **object oriented design** but I often see this violated with regards to system architectures. For example take packaging an application for deployment. The process in which you filter the build of your software to include the components that are necessary in a package. Where would you store the information which component should be included in the package? You could create a list that includes the names of the components that should be packaged. That means you introduce your first repetition. You now have two places where component names are mentioned. A better solution would be to add that information to the component itself. When the first list in any format shows up in or around an application, **alarm bells** should sound and you should be on the lookout for repetition
 
-#4. Slicing the cake
+### #4. Slicing the cake
 
 ![Slicing the cake](../../../images/Slicingthecake.png)
 
@@ -41,10 +43,10 @@ Say you use layering in your architecture design because your stakeholders expec
 	
 The difficulty with slicing is how to slice the cake so that the next slice will properly align with the previous.
 
-#5. Prototype
+### #5. Prototype
 When creating a software architecture design make sure that you prototype your design. Validate your assumptions, do that performance test and make sure that the security architecture is valid. A prototype will give you the opportunity to fail fast which is a good thing.
 
-#6. Quantify
+### #6. Quantify
 
 ![Measure](../../../images/Measure1.jpg)
 
@@ -56,17 +58,17 @@ This principle extends the first principle “Based on Requirements”. To be ab
 2. Measure the size of the entire software product;
 3. Calculate the ratio of reused parts, which is the sum of reused parts divided by (2).
 
-#7. Get it working, Get it right, Get it optimized
+### #7. Get it working, Get it right, Get it optimized
 
 In many projects I have seen architects and developers design software architectures that focus on creating general purpose libraries, services or infrastructure. These are created without a direct reference to a concrete application. Instead they are designing for tomorrow. This for me is like walking backwards, it is very difficult to design generality up-front. Today’s businesses change too fast to design for generality up-front.
 
 You should always start with a concrete implementation for a specific problem. At the time you start working on the next application and find similarities, that’s the time to think about generalizing. This makes the first solution simpler, which should be your design goal.
 
-#8. Focus on the Boundaries and Interfaces
+### #8. Focus on the Boundaries and Interfaces
 
 When creating your software architecture design you should focus on the boundaries of your system and components. When starting blank you should think about separation of concerns. What component or system has which responsibility? Between the components or system design explicit interfaces. Don’t separate a system of component when a lot of communication is necessary between these components or systems.
 
-#9. The Perfect is the enemy of the Good
+### #9. The Perfect is the enemy of the Good
 
 ![Perfection](../../../images/Perfection1.jpg)
 
@@ -74,7 +76,7 @@ The phrase “The perfect is the enemy of the good” from [Voltaire](http://en.
 
 Perfection is never possible. However you are able to create a good software architecture design. Do not try to analyze everything during the start of the project it will slow you down. Watch out for [Analysis Paralysis](http://en.wikipedia.org/wiki/Analysis_paralysis) 
 
-#10. Align with your stakeholders
+### #10. Align with your stakeholders
 
 ![](../../../images/Stakeholders.jpg)
 
